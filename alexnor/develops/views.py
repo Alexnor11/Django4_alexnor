@@ -4,9 +4,15 @@ from django.template.loader import render_to_string
 from django.shortcuts import render, redirect
 
 
-# Create your views here.
+menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+
+
 def index(request):
-    return render(request, 'develops/index.html')
+    data = {
+        'title': 'Главная страница',
+        'menu': menu,
+    }
+    return render(request, 'develops/index.html', context=data)
 
 
 def about(request):
