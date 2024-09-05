@@ -1,10 +1,14 @@
 from django.http import HttpResponse
-
+from django.urls import reverse
 from django.template.loader import render_to_string
 from django.shortcuts import render, redirect
 
 
-menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+menu = [{'title': "О сайте", 'url_name': 'about'},
+        {'title': "Добавить статью", 'url_name': 'add_page'},
+        {'title': "Обратная связь", 'url_name': 'contact'},
+        {'title': "Войти", 'url_name': 'login'}
+]
 
 
 def index(request):
@@ -16,20 +20,19 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'develops/about.html')
+    return render(request, 'develops/about.html',{'title': 'О сайте', 'menu': menu})
 
 
-def categories(request, cat_id):
-    return HttpResponse(f"<h1>Статьи по категориям</h1><p>id: {cat_id}</p>")
+def addpage(request):
+    return HttpResponse("Добавление статьи")
 
 
-def categories_by_slug(request, cat_slug):
-    if request.GET:
-        print(request.GET)
-    return HttpResponse(f"<h1>Статьи по категориям</h1><p>slug: {cat_slug}</p>")
+def contact(request):
+    return HttpResponse("Обратная связь")
 
 
-def archive(request, year):
-    if year > 2023:
-        return redirect('cats','python', permanent=True)
-    return HttpResponse(f"<h1>Архив по годам</h1><p> {year}</p>")
+def login(request):
+    return HttpResponse("Авторизация")
+
+
+
