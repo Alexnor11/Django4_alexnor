@@ -16,6 +16,7 @@ cats_db = [
     {'id': 3, 'name': 'Linux'},
     {'id': 4, 'name': 'Docker'},
     {'id': 5, 'name': 'Git'},
+    {'id': 6, 'name': 'News blog'},
 ]
 
 
@@ -30,6 +31,10 @@ def index(request):
 
 def about(request):
     return render(request, 'develops/about.html',{'title': 'О сайте', 'menu': menu})
+
+
+def show_post(request, post_id):
+    return HttpResponse(f"Отображение статьи с id = {post_id}")
 
 
 def addpage(request):
