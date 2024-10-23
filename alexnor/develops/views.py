@@ -3,23 +3,14 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Alexnor, Category
+from .forms import AddPostForm, UploadFileForm
+from .models import Alexnor, Category, UploadFiles
 
 menu = [{'title': "О сайте", 'url_name': 'about'},
         {'title': "Обратная связь", 'url_name': 'contact'},
         {'title': "Добавить статью", 'url_name': 'add_page'},
         {'title': "Войти", 'url_name': 'login'}
         ]
-
-
-# cats_db = [
-#     {'id': 1, 'name': 'Web develops'},
-#     {'id': 2, 'name': 'Games develops'},
-#     {'id': 3, 'name': 'Linux'},
-#     {'id': 4, 'name': 'Docker'},
-#     {'id': 5, 'name': 'Git'},
-#     {'id': 6, 'name': 'News blog'},
-# ]
 
 
 def index(request):
@@ -34,7 +25,15 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'develops/about.html', {'title': 'О сайте', 'menu': menu})
+    # if request.method == 'POST':
+    #     form = UploadFileForm(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         fp = UploadFiles(file=form.cleaned_data['file'])
+    #         fp.save()
+    # else:
+    #     form = UploadFileForm()
+    return render(request, 'develops/about.html',
+                  {'title': 'О сайте', 'menu': menu})
 
 
 def show_post(request, post_slug):
@@ -50,11 +49,28 @@ def show_post(request, post_slug):
 
 
 def addpage(request):
-    return HttpResponse("Добавление статьи")
+    if request.method == 'POST':
+        form = AddPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = AddPostForm()
+
+    data = {
+        'menu': menu,
+        'title': 'Добавление статьи',
+        'form': form
+    }
+    return render(request, 'develops/addpage.html', context=data)
 
 
 def contact(request):
-    return HttpResponse("Обратная связь")
+    data = {
+        'menu': menu,
+        'title': 'Форма обратной связи'
+    }
+    return render(request, 'develops/contact.html', context=data)
 
 
 def login(request):

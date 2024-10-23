@@ -6,10 +6,13 @@
 
     <li><div class="article-panel">
          <p class="first">Категория: {{p.cat.name}}</p>
-         <p class="last">Дата: {{p.time_update|date:"d-m-Y H:i:s"}}</p>
+         <p class="last">Дата: {{p.time_update|date:"d-m-Y "}}</p>
          </div>
 
-            <h2>{{p.title}}</h2>
+    <h2>{{p.title}}</h2>
+{% if p.photo %}
+    <p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
+{% endif %}
          {% autoescape off %}
          {{p.content|linebreaks|truncatewords:50}}
          {% endautoescape %}
