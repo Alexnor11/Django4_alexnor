@@ -8,12 +8,13 @@ from .models import Alexnor, Category
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     list_display_links = ('name',)
+    prepopulated_fields = {"slug": ("name",)}
 
 
 @admin.register(Alexnor)
 class DevelopsAdmin(admin.ModelAdmin):
     fields = ['title', 'slug', 'content', 'photo', 'post_photo', 'cat', 'is_published']
-    list_display = ('id', 'title', 'time_create', 'is_published', 'cat', 'post_photo')
+    list_display = ('id', 'title', 'time_create', 'is_published', 'cat')
     readonly_fields = ['post_photo']
     list_display_links = ('title',)
     ordering = ['-time_create', 'title']

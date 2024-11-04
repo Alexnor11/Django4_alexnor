@@ -19,10 +19,10 @@ a:hover {
 img {max-width: 600px; height: auto;}
 
 img.img-article-left {
-	max-width: 300px;
+	max-width: 400px;
 	height: auto;
 	float: left;
-	padding: 0 10px 10px 0;
+	padding: 0 20px 20px 0;
 }
 
 img.img-article-left.thumb {
@@ -36,13 +36,13 @@ p.link-read-post {
 p.link-read-post a {
 	padding: 10px;
 	min-width: 100px;
-	background: #333671;
+	background: #005273;
 	color: #fff;
 	text-decoration: none;
 }
 
 div.article-panel {
-    background: #eee;
+    background: #eaf5ff;
     padding: 5px 10px 5px 10px;
     box-sizing: border-box;
     overflow: hidden;
@@ -76,13 +76,13 @@ ul.list-articles li {
 .clear {clear: both;}
 
 .header {
-	background: #0073a1;
+	background: #005273;
 	height: 60px;
 }
 
 .logo {
-	background: url('../images/logo_01.png') no-repeat 10px 5px;
-	width: 70px;
+	background: url('../images/logo_alexnor02.svg') no-repeat 10px 5px;
+	width: 200px;
 	height: 60px;
 }
 
@@ -162,7 +162,7 @@ div.button {
 
 .left-chapters {
 	margin: 0;
-	background: #eee;
+	background: #eaf5ff;
 	border-right: 1px solid #ccc;
 }
 .left-chapters ul {
@@ -373,7 +373,7 @@ ul.lang-list li a:hover {color: #fdc073;}
 #footer {
 	box-sizing: border-box;
 
-	background: #0073a1;
+	background: #005273;
 	padding: 5px;
 	color: #aaa;
 	font-size: 14px;
