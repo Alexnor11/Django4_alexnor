@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'develops.apps.DevelopConfig',
+    'users.apps.UsersConfig'
 
 ]
 
